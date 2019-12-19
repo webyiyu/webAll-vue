@@ -1,7 +1,7 @@
 <template>
   <div class="hello">
     <!-- <v-input @input="val = arguments[0]" :value='val' /> -->
-    <v-form :model="model" :rules="rules">
+    <v-form :model='model' :rules='rules'>
       <v-form-item label="用户名" prop="username">
         <v-input v-model="model.username" type="text" />
       </v-form-item>
@@ -20,20 +20,16 @@ import VForm from "./Form";
 export default {
   name: "HelloWorld",
   components: { VInput, VFormItem, VForm },
+  provide(){
+    return {
+      
+    }
+  },
   data() {
     return {
       val: "",
       model: {},
-      rules: {
-        username: [
-          { required: true, message: "请输入用户名 ", trigger: "blur" },
-          { min: 3, max: 5, message: "长度在 3 到 5 个字符", trigger: "blur" }
-        ],
-        password: [
-          { required: true, message: "请输入密码 ", trigger: "blur" },
-          { min: 3, message: "长度在 3个字符以上", trigger: "blur" }
-        ],
-      }
+      rules: {},
     };
   },
   props: {
